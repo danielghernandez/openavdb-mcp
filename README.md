@@ -9,16 +9,16 @@ An MCP (Model Context Protocol) server that exposes OpenAvDB aviation data to Cl
 - Node.js 18 or later
 - An OpenAvDB account (sign up at https://openavdb.com)
 
-### Install from npm
+### Install from GitHub
 
 ```bash
-npm install -g openavdb-mcp
+npx github:danielghernandez/openavdb-mcp
 ```
 
-### Or build from source
+### Or clone and build
 
 ```bash
-git clone https://github.com/h9partners/openavdb-mcp.git
+git clone https://github.com/danielghernandez/openavdb-mcp.git
 cd openavdb-mcp
 npm install
 npm run build
@@ -38,10 +38,7 @@ Add the server to your Claude Desktop configuration:
   "mcpServers": {
     "openavdb": {
       "command": "npx",
-      "args": ["-y", "openavdb-mcp"],
-      "env": {
-        "OPENAVDB_API_URL": "https://api.openavdb.com"
-      }
+      "args": ["-y", "github:danielghernandez/openavdb-mcp"]
     }
   }
 }
@@ -50,7 +47,7 @@ Add the server to your Claude Desktop configuration:
 ### Claude Code CLI
 
 ```bash
-claude mcp add openavdb -- npx -y openavdb-mcp
+claude mcp add openavdb -- npx -y github:danielghernandez/openavdb-mcp
 ```
 
 ## Authentication
