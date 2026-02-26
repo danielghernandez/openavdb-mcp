@@ -138,12 +138,6 @@ export declare const fractional: {
         offset?: number;
     }) => Promise<ApiResponse<unknown[]>>;
     getProvider: (id: string) => Promise<ApiResponse<unknown>>;
-    aircraft: (params?: {
-        limit?: number;
-        offset?: number;
-        provider?: string;
-        aircraft_type?: string;
-    }) => Promise<ApiResponse<unknown[]>>;
 };
 export declare const hangars: {
     list: (params?: {

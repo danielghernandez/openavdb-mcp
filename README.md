@@ -99,9 +99,8 @@ The first time you use an OpenAvDB tool, you'll be prompted to sign in. The serv
 
 | Tool | Description |
 |------|-------------|
-| `search_fractional_providers` | List fractional ownership providers |
-| `get_fractional_provider` | Get provider details |
-| `search_fractional_aircraft` | Search fractional fleet |
+| `search_fractional_providers` | List fractional ownership providers (NetJets, Flexjet, etc.) |
+| `get_fractional_provider` | Get provider details including fleet count |
 
 ### Analytics Tools
 

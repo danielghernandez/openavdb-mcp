@@ -75,44 +75,7 @@ export function registerFractionalTools(server: McpServer): void {
     }
   );
 
-  // Search fractional aircraft
-  server.tool(
-    'search_fractional_aircraft',
-    'Search for aircraft in fractional ownership fleets.',
-    {
-      provider: z.string().optional().describe('Filter by provider ID'),
-      aircraft_type: z.string().optional().describe('Filter by aircraft type'),
-      limit: z.number().optional().default(20).describe('Maximum results (max 100)'),
-      offset: z.number().optional().default(0).describe('Pagination offset'),
-    },
-    async (params) => {
-      try {
-        const response = await fractional.aircraft({
-          provider: params.provider,
-          aircraft_type: params.aircraft_type,
-          limit: Math.min(params.limit ?? 20, 100),
-          offset: params.offset ?? 0,
-        });
-
-        return {
-          content: [{
-            type: 'text',
-            text: JSON.stringify({
-              aircraft: response.data,
-              total: response.meta?.total,
-              showing: response.data.length,
-            }, null, 2),
-          }],
-        };
-      } catch (error) {
-        return {
-          content: [{
-            type: 'text',
-            text: `Error searching fractional aircraft: ${error instanceof Error ? error.message : 'Unknown error'}`,
-          }],
-          isError: true,
-        };
-      }
-    }
-  );
+  // Note: search_fractional_aircraft removed - endpoint not yet implemented in API
+  // Fractional aircraft data exists in the fleet collection but is not yet
+  // filterable by fractional provider. This can be added in a future update.
 }

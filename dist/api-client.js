@@ -134,9 +134,10 @@ export const flightSchools = {
     get: (id) => get(`/flight-schools/${id}`),
 };
 export const fractional = {
-    providers: (params) => list('/fractional/providers', params),
-    getProvider: (id) => get(`/fractional/providers/${id}`),
-    aircraft: (params) => list('/fractional/aircraft', params),
+    providers: (params) => list('/fractional', params),
+    getProvider: (id) => get(`/fractional/${id}`),
+    // Note: fractional aircraft endpoint not yet implemented in API
+    // Aircraft are in the fleet collection but not filterable by fractional owner yet
 };
 export const hangars = {
     list: (params) => list('/hangars', params),

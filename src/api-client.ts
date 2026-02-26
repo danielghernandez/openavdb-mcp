@@ -259,16 +259,12 @@ export const fractional = {
   providers: (params?: {
     limit?: number;
     offset?: number;
-  }) => list('/fractional/providers', params as Record<string, string | number | boolean | undefined>),
+  }) => list('/fractional', params as Record<string, string | number | boolean | undefined>),
 
-  getProvider: (id: string) => get(`/fractional/providers/${id}`),
+  getProvider: (id: string) => get(`/fractional/${id}`),
 
-  aircraft: (params?: {
-    limit?: number;
-    offset?: number;
-    provider?: string;
-    aircraft_type?: string;
-  }) => list('/fractional/aircraft', params as Record<string, string | number | boolean | undefined>),
+  // Note: fractional aircraft endpoint not yet implemented in API
+  // Aircraft are in the fleet collection but not filterable by fractional owner yet
 };
 
 export const hangars = {
