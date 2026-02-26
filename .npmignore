@@ -1,0 +1,8 @@
+src/
+tsconfig.json
+test-api.mjs
+*.ts
+!dist/**/*.d.ts
+.git
+.gitignore
+node_modules

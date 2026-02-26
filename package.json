@@ -1,0 +1,57 @@
+{
+  "name": "openavdb-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for OpenAvDB aviation data - airports, FBOs, aircraft, charter, and more",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "openavdb-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/h9partners/openavdb-mcp.git"
+  },
+  "homepage": "https://openavdb.com",
+  "bugs": {
+    "url": "https://github.com/h9partners/openavdb-mcp/issues"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "firebase": "^11.0.0",
+    "open": "^10.0.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "aviation",
+    "airports",
+    "fbo",
+    "aircraft",
+    "openavdb",
+    "ai",
+    "llm"
+  ],
+  "author": "H9 Partners <support@h9partners.com>",
+  "license": "MIT"
+}
