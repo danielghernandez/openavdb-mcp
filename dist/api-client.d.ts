@@ -74,6 +74,9 @@ export declare const airports: {
         city?: string;
         min_runway?: number;
         towered?: boolean;
+        fbo_count?: number;
+        min_fbo_count?: number;
+        max_fbo_count?: number;
         icao?: string;
         include?: string;
         describe_fields?: boolean;

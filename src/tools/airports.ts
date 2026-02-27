@@ -12,12 +12,15 @@ export function registerAirportTools(server: McpServer): void {
   // Search airports
   server.tool(
     'search_airports',
-    'Search for US airports by state, city, runway length, or control tower status. Returns a list of airports matching the criteria.',
+    'Search for US airports by state, city, runway length, FBO count, or control tower status. Returns a list of airports matching the criteria.',
     {
       state: z.string().optional().describe('Two-letter US state code (e.g., "TX", "CA")'),
       city: z.string().optional().describe('City name to filter by'),
       min_runway: z.number().optional().describe('Minimum runway length in feet'),
       towered: z.boolean().optional().describe('Filter by control tower status'),
+      fbo_count: z.number().optional().describe('Exact number of FBOs at the airport'),
+      min_fbo_count: z.number().optional().describe('Minimum number of FBOs'),
+      max_fbo_count: z.number().optional().describe('Maximum number of FBOs'),
       limit: z.number().optional().default(20).describe('Maximum results to return (max 100)'),
       offset: z.number().optional().default(0).describe('Pagination offset'),
     },
@@ -28,6 +31,9 @@ export function registerAirportTools(server: McpServer): void {
           city: params.city,
           min_runway: params.min_runway,
           towered: params.towered,
+          fbo_count: params.fbo_count,
+          min_fbo_count: params.min_fbo_count,
+          max_fbo_count: params.max_fbo_count,
           limit: Math.min(params.limit ?? 20, 100),
           offset: params.offset ?? 0,
         });
