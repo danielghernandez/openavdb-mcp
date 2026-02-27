@@ -214,8 +214,15 @@ export const fbos = {
   fuel: (params?: {
     limit?: number;
     offset?: number;
+    airport?: string;
+    state?: string;
+    city?: string;
+    chain?: string;
+    fuel_type?: 'jet_a' | 'avgas_100ll';
+    service_type?: 'self_serve' | 'full_serve';
     min_price?: number;
     max_price?: number;
+    sort?: 'price_asc' | 'price_desc' | 'updated_desc';
   }) => list('/fbos/fuel', params as Record<string, string | number | boolean | undefined>),
 };
 

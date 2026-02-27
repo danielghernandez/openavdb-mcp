@@ -86,18 +86,32 @@ export function registerFBOTools(server: McpServer): void {
   // Get fuel prices
   server.tool(
     'get_fuel_prices',
-    'Search for aviation fuel prices across FBOs. Useful for finding the best fuel deals.',
+    'Search for aviation fuel prices across FBOs. Filter by airport, state, city, FBO chain, fuel type, and service type. Sort by price or last updated.',
     {
-      min_price: z.number().optional().describe('Minimum fuel price per gallon'),
-      max_price: z.number().optional().describe('Maximum fuel price per gallon'),
+      airport: z.string().optional().describe('Filter by airport ICAO code (e.g., "KEDC", "KAUS")'),
+      state: z.string().optional().describe('Two-letter US state code (e.g., "TX", "CA")'),
+      city: z.string().optional().describe('City name to filter by (e.g., "Austin")'),
+      chain: z.string().optional().describe('FBO chain/brand name (e.g., "Million Air", "Atlantic Aviation")'),
+      fuel_type: z.enum(['jet_a', 'avgas_100ll']).optional().default('jet_a').describe('Type of fuel: jet_a (Jet-A) or avgas_100ll (100LL avgas)'),
+      service_type: z.enum(['self_serve', 'full_serve']).optional().default('full_serve').describe('Service type: self_serve or full_serve'),
+      min_price: z.number().optional().describe('Minimum fuel price per gallon in USD'),
+      max_price: z.number().optional().describe('Maximum fuel price per gallon in USD'),
+      sort: z.enum(['price_asc', 'price_desc', 'updated_desc']).optional().default('price_asc').describe('Sort order: price_asc (cheapest first), price_desc, or updated_desc (most recent)'),
       limit: z.number().optional().default(20).describe('Maximum results (max 100)'),
       offset: z.number().optional().default(0).describe('Pagination offset'),
     },
     async (params) => {
       try {
         const response = await fbos.fuel({
+          airport: params.airport,
+          state: params.state,
+          city: params.city,
+          chain: params.chain,
+          fuel_type: params.fuel_type,
+          service_type: params.service_type,
           min_price: params.min_price,
           max_price: params.max_price,
+          sort: params.sort,
           limit: Math.min(params.limit ?? 20, 100),
           offset: params.offset ?? 0,
         });
@@ -109,6 +123,8 @@ export function registerFBOTools(server: McpServer): void {
               fuel_prices: response.data,
               total: response.meta?.total,
               showing: response.data.length,
+              fuel_type: response.meta?.fuel_type,
+              service_type: response.meta?.service_type,
             }, null, 2),
           }],
         };
