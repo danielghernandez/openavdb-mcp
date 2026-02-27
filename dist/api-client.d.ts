@@ -109,6 +109,7 @@ export declare const aircraft: {
         type?: string;
         manufacturer?: string;
         based_airport?: string;
+        registrant?: string;
     }) => Promise<ApiResponse<unknown[]>>;
     get: (registration: string) => Promise<ApiResponse<unknown>>;
 };

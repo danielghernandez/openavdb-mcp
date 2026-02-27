@@ -1,1 +1,1 @@
-{"version":3,"file":"aircraft.d.ts","sourceRoot":"","sources":["../../src/tools/aircraft.ts"],"names":[],"mappings":"AAAA;;;;GAIG;AAEH,OAAO,EAAE,SAAS,EAAE,MAAM,yCAAyC,CAAC;AAIpE,wBAAgB,qBAAqB,CAAC,MAAM,EAAE,SAAS,GAAG,IAAI,CAwE7D"}
+{"version":3,"file":"aircraft.d.ts","sourceRoot":"","sources":["../../src/tools/aircraft.ts"],"names":[],"mappings":"AAAA;;;;GAIG;AAEH,OAAO,EAAE,SAAS,EAAE,MAAM,yCAAyC,CAAC;AAIpE,wBAAgB,qBAAqB,CAAC,MAAM,EAAE,SAAS,GAAG,IAAI,CA0E7D"}

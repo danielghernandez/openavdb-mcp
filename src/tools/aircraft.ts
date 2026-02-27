@@ -12,11 +12,12 @@ export function registerAircraftTools(server: McpServer): void {
   // Search aircraft
   server.tool(
     'search_aircraft',
-    'Search the FAA aircraft registry by type, manufacturer, or home airport.',
+    'Search the FAA aircraft registry by type, manufacturer, home airport, or registrant/owner name.',
     {
       type: z.string().optional().describe('Aircraft type (e.g., "Fixed Wing Single-Engine", "Rotorcraft")'),
       manufacturer: z.string().optional().describe('Aircraft manufacturer name'),
       based_airport: z.string().optional().describe('ICAO code of home airport'),
+      registrant: z.string().optional().describe('Registrant/owner name prefix (e.g., "NetJets" matches all NetJets entities)'),
       limit: z.number().optional().default(20).describe('Maximum results (max 100)'),
       offset: z.number().optional().default(0).describe('Pagination offset'),
     },
@@ -26,6 +27,7 @@ export function registerAircraftTools(server: McpServer): void {
           type: params.type,
           manufacturer: params.manufacturer,
           based_airport: params.based_airport,
+          registrant: params.registrant,
           limit: Math.min(params.limit ?? 20, 100),
           offset: params.offset ?? 0,
         });

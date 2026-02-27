@@ -224,6 +224,7 @@ export const aircraft = {
     type?: string;
     manufacturer?: string;
     based_airport?: string;
+    registrant?: string;
   }) => list('/aircraft', params as Record<string, string | number | boolean | undefined>),
 
   get: (registration: string) => get(`/aircraft/${registration.toUpperCase()}`),
