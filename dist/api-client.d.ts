@@ -91,8 +91,10 @@ export declare const fbos: {
     list: (params?: {
         limit?: number;
         offset?: number;
+        state?: string;
         airport?: string;
         brand?: string;
+        towered?: boolean;
     }) => Promise<ApiResponse<unknown[]>>;
     get: (id: string) => Promise<ApiResponse<unknown>>;
     fuel: (params?: {

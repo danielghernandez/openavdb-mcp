@@ -203,8 +203,10 @@ export const fbos = {
   list: (params?: {
     limit?: number;
     offset?: number;
+    state?: string;
     airport?: string;
     brand?: string;
+    towered?: boolean;
   }) => list('/fbos', params as Record<string, string | number | boolean | undefined>),
 
   get: (id: string) => get(`/fbos/${id}`),
